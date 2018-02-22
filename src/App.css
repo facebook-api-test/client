@@ -4,8 +4,15 @@
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 500px;
-  width: 500px;
+  height: 350px;
+  width: 350px;
+  margin: 20px;
+
+}
+
+.App-fill{
+  height: 100%;
+  width: 100%;
 }
 
 .App-header {
@@ -25,9 +32,17 @@
   font-size: large;
 }
 
-.Flavor{
-  padding: 100px;
+.App-table{
+  align-content: center;
+  margin: 0px auto;
 }
+
+.App-row-default{
+  height: 100px;
+}
+
+
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
