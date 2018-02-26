@@ -65,9 +65,12 @@
     // successful.  See statusChangeCallback() for when this call is made.
     function testAPI() {
         console.log('Welcome!  Fetching your information.... ');
-        FB.api('/me?fields=id,name,picture', function(response) {
+        FB.api('/me?fields=id,email,first_name,last_name,user_birthday,user_education_history,user_work_history', function(response) {
         document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.id + " " + response.name + '!';
+        'First Name: ' + response.first_name +
+            ' Last Name: ' + response.last_name +
+            ' Email: '+ response.email +
+            ' Birthday: ' + response.user_birthday + '!';
         });
     }
 
