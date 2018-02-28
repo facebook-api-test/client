@@ -6,7 +6,6 @@ const FacebookLogin = () =>
 {
     //first function
     (function(d, s, id) {
-        console.log('other Function');
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
         js = d.createElement(s); js.id = id;
@@ -16,7 +15,6 @@ const FacebookLogin = () =>
 
     //second function
     window.fbAsyncInit = function() {
-        console.log('fbAsyncInit');
         window.FB.init({
             appId      : '1011209039030733',
             cookie     : true,
@@ -27,12 +25,20 @@ const FacebookLogin = () =>
         window.FB.getLoginStatus(function(response) {
             statusChangeCallback(response);
         });
+
+        window.FB.Event.subscribe('auth.authResponseChange', function(response) {
+            if (response.status === 'connected') {
+                console.log('Event: Connected');
+            } else if (response.status === 'not_authorized') {
+                console.log('Event: Not_Authorized');
+            } else {
+                console.log('Event: Unknown');
+            }
+        });
     };
 
     //third function
     function statusChangeCallback(response) {
-        console.log('statusChangeCallback');
-        console.log(response);
         if (response.status === 'connected') {
             testAPI();
         } else {
@@ -40,19 +46,10 @@ const FacebookLogin = () =>
         }
     }
 
-    function checkLoginState() {
-        console.log('checkLoginState');
-        window.FB.getLoginStatus(function(response) {
-            statusChangeCallback(response);
-        });
-    }
-
     function testAPI() {
         console.log('Welcome!  Fetching your information.... ');
         window.FB.api('/me', function(response) {
             console.log('Successful login for: ' + response.name);
-            document.getElementById('Body').innerHTML =
-            'Thanks for logging in, ' + response.name + '!';
         });
     }
 
