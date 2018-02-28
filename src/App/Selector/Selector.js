@@ -41,10 +41,6 @@ class Selector extends React.Component {
         })(document, 'script', 'facebook-jssdk');
     }
 
-    componentWillUnmount () {
-
-    }
-
     render() {
         return (
             <div>
