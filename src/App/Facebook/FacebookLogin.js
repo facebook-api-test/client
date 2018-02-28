@@ -53,9 +53,7 @@ const FacebookLogin = () =>
         });
     }
 
-    return (
-        <FacebookButton />
-    );
+    return (null);
 }
 
 export default FacebookLogin;
