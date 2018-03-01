@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { withRouter } from 'react-router-dom';
 import FacebookButton from './FacebookButton';
 
 const FacebookLogin = () =>
@@ -29,6 +29,7 @@ const FacebookLogin = () =>
         window.FB.Event.subscribe('auth.authResponseChange', function(response) {
             if (response.status === 'connected') {
                 console.log('Event: Connected');
+
             } else if (response.status === 'not_authorized') {
                 console.log('Event: Not_Authorized');
             } else {
@@ -41,6 +42,7 @@ const FacebookLogin = () =>
     function statusChangeCallback(response) {
         if (response.status === 'connected') {
             testAPI();
+            withRouter.history.push('/prefill');
         } else {
             console.log('You are not logged in');
         }
@@ -53,6 +55,9 @@ const FacebookLogin = () =>
         });
     }
 
+    function forwardNav() {
+
+    }
     return (null);
 }
 
